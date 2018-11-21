@@ -19,14 +19,12 @@ import java.util.Map;
 public class BrainfuckServlet extends HttpServlet {
 
     private ObjectMapper objectMapper;
-    private BrainfuckInterpreter brainfuckInterpreter;
     private HikariDataSource dataSource;
 
     @Override
     public void init() {
         HikariConfig hikariConfig = new HikariConfig("/hikary.properties");
         dataSource = new HikariDataSource(hikariConfig);
-        brainfuckInterpreter = new BrainfuckInterpreter(560);
         objectMapper = new ObjectMapper();
     }
 
@@ -44,8 +42,7 @@ public class BrainfuckServlet extends HttpServlet {
             Expression o = new OutOperation();
             Expression rbr = new RightbrOperation();
             Expression lbr = new LeftbrOperation();
-            while (context.getConvertiblepointer() < text.length())
-            {
+            while (context.getConvertiblepointer() < text.length()) {
                 System.out.println(context.getData());
                 System.out.println("pk");
                 n.interpret(context);

@@ -12,33 +12,28 @@ public class Context {
 
     private InputStreamReader reader;
 
-    public Context(String input)
-    {
+    public Context(String input) {
         this.input = input;
         data = new byte[200];
-        output="";
+        output = "";
         resultpointer = 0;
         convertiblepointer = 0;
         reader = new InputStreamReader(System.in);
     }
 
-    public String getInput()
-    {
+    public String getInput() {
         return input;
     }
 
-    public void setInput(String input)
-    {
+    public void setInput(String input) {
         this.input = input;
     }
 
-    public String getOutput()
-    {
+    public String getOutput() {
         return output;
     }
 
-    public void setOutput(String output)
-    {
+    public void setOutput(String output) {
         this.output = output;
     }
 
