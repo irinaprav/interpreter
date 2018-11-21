@@ -1,0 +1,29 @@
+.converterblock{
+    border: 5px solid #4b5558;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    width: 500px;
+    height: 500px;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    margin: auto ;
+}
+label{
+    font-size: 18px;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+textarea{
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+#blockinput{
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+body{
+    background: aliceblue;
+}
