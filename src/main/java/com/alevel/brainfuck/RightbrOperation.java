@@ -3,7 +3,6 @@ package com.alevel.brainfuck;
 public class RightbrOperation implements Expression{
     @Override
     public void interpret(Context context) {
-        if (context.getInput().charAt(context.getConvertiblepointer()) == ']'){
             char[] chardata = context.getInput().toCharArray();
                 int i = 1;
                 while (i > 0) {
@@ -16,6 +15,8 @@ public class RightbrOperation implements Expression{
                         i++;
 
                 }
-        }
+                char c = context.getConvertiblepointer();
+                c--;
+                context.setConvertiblepointer(c);
     }
 }

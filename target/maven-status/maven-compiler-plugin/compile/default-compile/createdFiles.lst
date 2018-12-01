@@ -1,12 +1,11 @@
-com/alevel/brainfuck/LeftbrOperation.class
-com/alevel/brainfuck/OutOperation.class
-com/alevel/brainfuck/RightbrOperation.class
 com/alevel/brainfuck/PrevOperation.class
 com/alevel/brainfuck/Context.class
-com/alevel/brainfuck/BrainfuckInterpreter.class
+com/alevel/brainfuck/LeftbrOperation.class
 com/alevel/brainfuck/NextOperation.class
 com/alevel/brainfuck/IncOperation.class
+com/alevel/brainfuck/OutOperation.class
 com/alevel/brainfuck/InOperation.class
 com/alevel/brainfuck/BrainfuckServlet.class
 com/alevel/brainfuck/DecOperation.class
+com/alevel/brainfuck/RightbrOperation.class
 com/alevel/brainfuck/Expression.class

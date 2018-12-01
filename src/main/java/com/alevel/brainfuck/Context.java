@@ -14,7 +14,7 @@ public class Context {
 
     public Context(String input) {
         this.input = input;
-        data = new byte[200];
+        data = new byte[255];
         output = "";
         resultpointer = 0;
         convertiblepointer = 0;

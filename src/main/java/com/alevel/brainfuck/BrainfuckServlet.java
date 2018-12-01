@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -20,12 +19,21 @@ public class BrainfuckServlet extends HttpServlet {
 
     private ObjectMapper objectMapper;
     private HikariDataSource dataSource;
+    private Map<Character,Expression> mainmap;
 
     @Override
     public void init() {
         HikariConfig hikariConfig = new HikariConfig("/hikary.properties");
         dataSource = new HikariDataSource(hikariConfig);
         objectMapper = new ObjectMapper();
+        mainmap = new HashMap<>();
+        mainmap.put('>',new NextOperation());
+        mainmap.put('<',new PrevOperation());
+        mainmap.put('+',new IncOperation());
+        mainmap.put('-',new DecOperation());
+        mainmap.put('.',new OutOperation());
+        mainmap.put(']',new RightbrOperation());
+        mainmap.put('[',new LeftbrOperation());
     }
 
     @Override
@@ -35,27 +43,12 @@ public class BrainfuckServlet extends HttpServlet {
         String answer;
         try {
             Context context = new Context(text);
-            NextOperation n = new NextOperation();
-            PrevOperation p = new PrevOperation();
-            Expression inc = new IncOperation();
-            Expression dec = new DecOperation();
-            Expression o = new OutOperation();
-            Expression rbr = new RightbrOperation();
-            Expression lbr = new LeftbrOperation();
-            while (context.getConvertiblepointer() < text.length()) {
-                System.out.println(context.getData());
-                System.out.println("pk");
-                n.interpret(context);
-                p.interpret(context);
-                inc.interpret(context);
-                dec.interpret(context);
-                o.interpret(context);
-                rbr.interpret(context);
-                lbr.interpret(context);
+            char c;
+            while ( context.getConvertiblepointer() < text.length()) {
+                mainmap.get(text.charAt(context.getConvertiblepointer())).interpret(context);
                 char m = context.getConvertiblepointer();
                 context.setConvertiblepointer(++m);
             }
-
             answer = context.getOutput();
         } catch (Exception e) {
             resp.sendError(
